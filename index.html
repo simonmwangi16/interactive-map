@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href='bootstrap/dist/css/bootstrap.css' />
+  <style>
+  body{ font-family: Arial; background: #D3D3D3}
+	.wrapper{margin: 0 auto; width:90%; padding: 10px; background: #FFFFFF;}
+  dl.image_map {display:block; width:545px; height:864px; background:url(house2.jpg); position:relative; margin:2px auto 2px auto;}
+	a.LINK0 {left:210px; top:13px; background:transparent;}
+	a.LINK0 {display:block; width:274px; height:0; padding-top:271px; overflow:hidden; position:absolute;}
+	a.LINK0:hover  {background: rgb(255, 102, 0); border:1px dashed black; color:black;}
+	a.LINK1 {left:46px; top:405px; background:transparent;}
+	a.LINK1 {display:block; width:253px; height:0; padding-top:404px; overflow:hidden; position:absolute;}
+	a.LINK1:hover  {background:rgb(255, 102, 0); border:1px dashed black; color:black;}
+	a.LINK2 {left:310px; top:483px; background:transparent;}
+	a.LINK2 {display:block; width:175px; height:0; padding-top:203px; overflow:hidden; position:absolute;}
+	a.LINK2:hover  {background:rgb(255, 102, 0); border:1px dashed black; color:black;}
+	a.LINK3 {left:384px; top:290px; background:transparent;}
+	a.LINK3 {display:block; width:101px; height:0; padding-top:197px; overflow:hidden; position:absolute;}
+	a.LINK3:hover  {background:rgb(255, 102, 0); border:1px dashed black; color:black;}
+	a.BLINK {left:543px; top:862px; background:transparent;}
+	a.BLINK {display:block; width:202px; height:17px; overflow:hidden; position:absolute; font-size:0px;}
+	a.BLINK:hover  {background:black; border:1px dashed white; color:white; font-size:9px;}
+	#sidebar {
+	position: absolute;
+	z-index: 20;
+	right: 150px;
+	}
+	.greydout {
+  -webkit-opacity: 0.7;
+  -moz-opacity: 0.7;
+  opacity: 0.7;
+-webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+} 
+  </style>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script type='text/javascript' src='bootstrap/dist/js/bootstrap.js?ver=3.7'></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<div class="wrapper">
+ <div class="row">
+  <div class="col-md-6" style="float:left;">
+  		<dl class="image_map">
+			<dd><a title="BEDROOM" href="page1.html" id="area" class="greydout movie LINK0"></a></dd>
+			<dd><a title="LIVING ROOM" href="page1.html" id="area2" class="greydout movie LINK1"></a></dd>
+			<dd><a title="KITCHEN" href="page1.html" id="area3" class="greydout movie LINK2"></a></dd>
+			<dd><a title="BATHROOM" href="page1.html" id="area4" class="greydout movie LINK3"></a></dd>
+		</dl>
+  
+  </div>
+  <div class="col-md-5" id="sidebar">
+		<div id="summary">Click on the area to view the details</div>
+	</div>
+</div>
+</div>
+
+
+
+ 
+ 
+<script>
+$(function() {
+    $('.movie').click(function() {
+    		var p_id  = $(this).attr('id');
+        $('#summary').fadeOut(0).fadeIn().load(this.href + " #"+p_id);
+        //alert(this.href + "#"+p_id)
+        return false;
+    });
+});
+
+
+var sideHeight = $('#sidebar').height();
+var footerHeight = $('#footer').height();
+
+$(window).scroll(function(){
+
+	var length = $(document).height() - sideHeight;
+	var scroll = $(this).scrollTop();
+
+	if ((sideHeight + footerHeight) > $(window).height()) {
+
+		if (scroll < 50) { // Header's height
+
+			$('#sidebar').css({'position' : 'absolute',
+			'top' : '0' });
+
+		} else if ((length - scroll) < 0) {
+
+			$('#sidebar').css({'position' : 'absolute', 
+			'bottom' : '0', 'top' : 'auto' });
+
+		} else {
+
+			$('sidebar').css({'position' : 'fixed',
+			'top' : '0' });
+		}
+
+	} else {
+
+		if (scroll > 50) {
+
+			$('#sidebar').css({'position' : 'fixed',
+			'top' : '0' });
+
+		} else {
+
+			$('#sidebar').css({'position' : 'absolute',
+			'top' : '0' });
+		}
+	}
+
+});
+  </script>
+ 
+</body>
+</html> 
+ 
+ 
+
+
+
+ 

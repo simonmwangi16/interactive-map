@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  body{ font-size: 12px; font-family: Arial; }
+  </style>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+ 
+ <a href="page1.html" class="movie">Page 1</a>
+ <a href="page3.html" class="movie">Page 2</a>
+<a href="page1.html" class="movie">Page 3</a>
+  <div id="summary">Here is summary of movie</div>
+ 
+ 
+<script>
+ 
+$(function() {
+    $('.movie').click(function() {
+        $('#summary').fadeOut(0).fadeIn().lload(this.href);
+        return false;
+    });
+});
+  </script>
+ 
+</body>
+</html>
